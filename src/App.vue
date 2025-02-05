@@ -7,7 +7,6 @@ import "vue3-emoji-picker/css";
 const emojis = ref(["😀", "😂", "🔥", "❤️"]);
 const sequence = ref([]);
 const selectedEmoji = ref(null);
-const showPicker = ref(0);
 const selectedColors = ref(Array(emojis.value.length).fill("bg-[#4A4A4A]"));
 
 const selectEmoji = (emoji, index) => {
@@ -35,10 +34,6 @@ const selectEmoji = (emoji, index) => {
 const changeEmoji = (index, newEmoji) => {
   emojis.value[index] = newEmoji;
 };
-
-const togglePicker = (index) => {
-  showPicker.value = showPicker.value === index ? null : index;
-};
 </script>
 
 <template>
@@ -55,19 +50,14 @@ const togglePicker = (index) => {
 
         {{ console.log("Emoji:", emoji, "Sequence:", sequence) }}
         //This would show the user his current emoji sequence
-        <button @click.stop="togglePicker(index)">
-          <ChevronDownIcon
-            class="size-6 transition-transform duration-500"
-            :class="showPicker === index ? 'rotate-180' : 'rotate-0 '"
-          />
-        </button>
-
-        <EmojiPicker
-          v-if="showPicker === index"
-          @select="(emoji) => changeEmoji(index, emoji.i)"
-          class="absolute"
-        />
+        <span @click.stop="togglePicker(index)">
+          <ChevronDownIcon class="rotate-180" />
+        </span>
       </div>
+      <EmojiPicker
+        @select="(emoji) => changeEmoji(index, emoji.i)"
+        class="absolute"
+      />
     </div>
   </div>
 </template>
