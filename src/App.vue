@@ -21,7 +21,10 @@ const selectEmoji = (emoji, index) => {
   } else {
     sequence.value.splice(existingIndex, 1);
   }
-  console.log(sequence.value);
+  if(sequence.value.length > 0){
+    console.log(sequence.value[0]);
+  }
+  
 
   selectedEmoji.value = index;
   selectedColors.value[index] =
@@ -39,15 +42,6 @@ const togglePicker = (index) => {
   showPicker.value = showPicker.value === index ? null : index;
 };
 
-function addSequence(index) {
-  if (!sequence.value.includes(index)) {
-    sequence.value.push(index);
-    console.log(sequence.value);
-  } else {
-    sequence.value.splice(index);
-    console.log(sequence.value);
-  }
-}
 </script>
 
 <template>
@@ -62,7 +56,7 @@ function addSequence(index) {
       >
         <span class="justify-center text-9xl text-white">{{ emoji }}</span>
 
-        {{ console.log('Emoji:', emoji, 'Sequence:', sequence.value) }}
+        {{ console.log('Emoji:', emoji, 'Sequence:', sequence) }}
 //This would show the user his current emoji sequence
         <button @click.stop="togglePicker(index)">
           <ChevronDownIcon
