@@ -21,8 +21,8 @@ const selectEmoji = (emoji, index) => {
   } else {
     sequence.value.splice(existingIndex, 1);
   }
-  if (sequence.value.length > 0) {
-    console.log(sequence.value[0]);
+  for (let i = 0; i < sequence.value.length; i++) {
+    console.log(sequence.value[i]);
   }
 
   selectedEmoji.value = index;
@@ -34,7 +34,6 @@ const selectEmoji = (emoji, index) => {
 
 const changeEmoji = (index, newEmoji) => {
   emojis.value[index] = newEmoji;
-  showPicker.value = null;
 };
 
 const togglePicker = (index) => {
