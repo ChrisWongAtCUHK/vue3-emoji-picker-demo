@@ -1,3 +1,4 @@
+[Vue.js ref variable is undefined in template, even though data is inside](https://stackoverflow.com/questions/79412326/vue-js-ref-variable-is-undefined-in-template-even-though-data-is-inside)
 # vue3-emoji-picker-demo
 
 This template should help get you started developing with Vue 3 in Vite.
