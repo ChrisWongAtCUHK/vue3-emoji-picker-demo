@@ -33,6 +33,7 @@ const selectEmoji = (emoji, index) => {
 
 const changeEmoji = (index, newEmoji) => {
   emojis.value[index] = newEmoji;
+  console.log(newEmoji);
 };
 </script>
 
@@ -50,7 +51,7 @@ const changeEmoji = (index, newEmoji) => {
 
         {{ console.log("Emoji:", emoji, "Sequence:", sequence) }}
         //This would show the user his current emoji sequence
-        <span @click.stop="togglePicker(index)">
+        <span>
           <ChevronDownIcon class="rotate-180" />
         </span>
       </div>
