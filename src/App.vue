@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { ChevronDownIcon } from "@heroicons/vue/24/outline";
 import EmojiPicker from "vue3-emoji-picker";
 import "vue3-emoji-picker/css";
@@ -21,10 +21,9 @@ const selectEmoji = (emoji, index) => {
   } else {
     sequence.value.splice(existingIndex, 1);
   }
-  if(sequence.value.length > 0){
+  if (sequence.value.length > 0) {
     console.log(sequence.value[0]);
   }
-  
 
   selectedEmoji.value = index;
   selectedColors.value[index] =
@@ -41,7 +40,6 @@ const changeEmoji = (index, newEmoji) => {
 const togglePicker = (index) => {
   showPicker.value = showPicker.value === index ? null : index;
 };
-
 </script>
 
 <template>
@@ -56,8 +54,8 @@ const togglePicker = (index) => {
       >
         <span class="justify-center text-9xl text-white">{{ emoji }}</span>
 
-        {{ console.log('Emoji:', emoji, 'Sequence:', sequence) }}
-//This would show the user his current emoji sequence
+        {{ console.log("Emoji:", emoji, "Sequence:", sequence) }}
+        //This would show the user his current emoji sequence
         <button @click.stop="togglePicker(index)">
           <ChevronDownIcon
             class="size-6 transition-transform duration-500"
