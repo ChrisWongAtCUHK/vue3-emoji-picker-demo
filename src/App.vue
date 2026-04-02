@@ -4,7 +4,8 @@ import { ChevronDownIcon } from "@heroicons/vue/24/outline";
 import EmojiPicker from "vue3-emoji-picker";
 import "vue3-emoji-picker/css";
 
-const emojis = ref(["😀", "😂", "🔥", "❤️"]);
+// CTRL + CMD + Space
+const emojis = ref(["😀", "😂", "🔥", "❤️", "🤬"]);
 const sequence = ref([]);
 const selectedEmoji = ref(null);
 const selectedColors = ref(Array(emojis.value.length).fill("bg-[#4A4A4A]"));
