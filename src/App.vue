@@ -3,6 +3,8 @@ import { ref } from "vue";
 import { ChevronDownIcon } from "@heroicons/vue/24/outline";
 import EmojiPicker from "vue3-emoji-picker";
 import "vue3-emoji-picker/css";
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 // CTRL + CMD + Space
 const emojis = ref(["😀", "😂", "🔥", "❤️", "🤬"]);
@@ -21,9 +23,11 @@ const selectEmoji = (emoji, index) => {
   } else {
     sequence.value.splice(existingIndex, 1);
   }
-  for (let i = 0; i < sequence.value.length; i++) {
-    console.log(sequence.value[i]);
-  }
+  
+  toast(JSON.stringify(sequence.value, null, 2), {
+    autoClose: 100000,
+  }); // ToastOptions
+
 
   selectedEmoji.value = index;
   selectedColors.value[index] =
@@ -34,7 +38,9 @@ const selectEmoji = (emoji, index) => {
 
 const changeEmoji = (index, newEmoji) => {
   emojis.value[index] = newEmoji;
-  console.log(newEmoji);
+  toast(newEmoji, {
+    autoClose: 1000,
+  }); 
 };
 </script>
 
