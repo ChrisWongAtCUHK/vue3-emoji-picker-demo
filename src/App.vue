@@ -16,16 +16,21 @@ const selectEmoji = (emoji, index) => {
   const existingIndex = sequence.value.findIndex((e) => e.emoji === emoji);
 
   if (existingIndex === -1) {
+    const orders = sequence.value.map(ele => ele.order);
+    const max = Math.max(...orders);
+    const min = Math.min(...orders);
+    const order = min === 1 ? max + 1 : 1;
+
     sequence.value.push({
       emoji,
-      order: sequence.value.length + 1,
+      order: order,
     });
   } else {
     sequence.value.splice(existingIndex, 1);
   }
   
   toast(JSON.stringify(sequence.value, null, 2), {
-    autoClose: 100000,
+    autoClose: 3000,
   }); // ToastOptions
 
 
